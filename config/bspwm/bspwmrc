@@ -5,6 +5,7 @@ pgrep -x dunst > /dev/null || dunst &
 pgrep -x copyq > /dev/null || copyq &
 xdg-autostart
 xsetroot -cursor_name left_ptr
+sh $HOME/.fehbg
 $HOME/.config/polybar/hack/launch.sh
 #$HOME/.config/polybar/hack/scripts/pywal.sh $HOME/wallpapers
 
