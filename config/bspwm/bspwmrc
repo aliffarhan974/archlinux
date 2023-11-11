@@ -1,0 +1,36 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x dunst > /dev/null || dunst &
+pgrep -x copyq > /dev/null || copyq &
+xdg-autostart
+xsetroot -cursor_name left_ptr
+$HOME/.config/polybar/hack/launch.sh
+#$HOME/.config/polybar/hack/scripts/pywal.sh $HOME/wallpapers
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+# source the colors.
+. "${HOME}/.cache/wal/colors.sh"
+
+# Set the border colors.
+bspc config normal_border_color "$color1"
+bspc config active_border_color "$color2"
+bspc config focused_border_color "$color15"
+# Use the line below if you are on bspwm >= 0.9.4
+bspc config presel_feedback_color "$color1"
+# Use the line below if you are on bspwm < 0.9.4
+#bspc config presel_border_color "$color1"
+
+bspc config border_width         2
+bspc config window_gap           5
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Microsoft-edge state=monocle follow=on desktop='^2'
+bspc rule -a "Microsoft-edge:crx__hnpfjngllnobngcgfapefoaidbinmjnm" state=floating center=on desktop="focused" rectangle="1906x994+0+34"
+bspc rule -a "Microsoft-edge:crx__leopjimageohmfdomgejgfkfjhcocdln" state=floating center=on desktop="focused" rectangle="1929x1010+0+34"
+bspc rule -a mpv state=floating rectangle="1920x1046+0+34"
+bspc rule -a neofetch state=floating rectangle="799x470+1116+34"
