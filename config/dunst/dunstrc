@@ -17,7 +17,7 @@
     horizontal_padding = 24
 
     # The frame color and width of the notification
-    frame_color = "#727787"
+    frame_color = "#E6433C"
     frame_width = 6
 
     # How long a user needs to be idle for sticky notifications
@@ -46,22 +46,21 @@
     max_icon_size = 128
 
 # These are the keybindings used to control dunst notifications
-[shortcuts]
     close = ctrl+space
     close_all = ctrl+shift+space
     history = ctrl+grave
 
 # Set the background and foreground (text) color for all notifications
 [urgency_low]
-    background = "#0a0a0b"
-    foreground = "#d4dae0"
+    background = "#0c090a"
+    foreground = "#9dc990"
 
 [urgency_normal]
-    background = "#0a0a0b"
-    foreground = "#d4dae0"
+    background = "#0c090a"
+    foreground = "#9dc990"
 
 [urgency_critical]
-    background = "#0a0a0b"
-    foreground = "#d4dae0"
+    background = "#0c090a"
+    foreground = "#9dc990"
 
 # vim:ft=cfg

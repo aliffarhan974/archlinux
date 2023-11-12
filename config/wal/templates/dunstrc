@@ -46,7 +46,6 @@
     max_icon_size = 128
 
 # These are the keybindings used to control dunst notifications
-[shortcuts]
     close = ctrl+space
     close_all = ctrl+shift+space
     history = ctrl+grave

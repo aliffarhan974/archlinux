@@ -180,3 +180,4 @@ configuration {
 */
 }
 
+@theme "/usr/share/rofi/themes/DarkBlue.rasi"

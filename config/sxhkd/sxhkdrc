@@ -155,3 +155,6 @@ super + {_,shift} + a
 
 super + shift + v
     normcap
+
+super + shift + s
+    flameshot gui

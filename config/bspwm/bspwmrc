@@ -8,6 +8,7 @@ xsetroot -cursor_name left_ptr
 sh $HOME/.fehbg
 $HOME/.config/polybar/hack/launch.sh
 #$HOME/.config/polybar/hack/scripts/pywal.sh $HOME/wallpapers
+$HOME/.local/bin/touchpad.sh t
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
@@ -33,5 +34,5 @@ bspc config gapless_monocle      true
 bspc rule -a Microsoft-edge state=monocle follow=on desktop='^2'
 bspc rule -a "Microsoft-edge:crx__hnpfjngllnobngcgfapefoaidbinmjnm" state=floating center=on desktop="focused" rectangle="1906x994+0+34"
 bspc rule -a "Microsoft-edge:crx__leopjimageohmfdomgejgfkfjhcocdln" state=floating center=on desktop="focused" rectangle="1929x1010+0+34"
-bspc rule -a mpv state=monocle follow=on desktop='^6'
+bspc rule -a mpv state=monocle
 bspc rule -a neofetch state=floating rectangle="799x470+1116+34"

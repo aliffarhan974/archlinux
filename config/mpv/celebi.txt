@@ -1,7 +1,7 @@
-sub-delay=0.000000
-video-sync=audio
-audio-device=auto
-playback-time=1440.856000
 loop=no
+playback-time=280.489000
+video-sync=audio
 hwdec=auto-safe
-volume=84.000000
+sub-delay=0.000000
+audio-device=auto
+volume=76.000000
