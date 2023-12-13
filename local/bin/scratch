@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Check if a focused floating window exists
+
+case "$1" in
+    toggle)
+        i=$(bspc query -N -n "focused.floating")
+        # Set the _SCRATCH property of the focused floating window to the current timestamp
+        xprop -id $i -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N)
+        # Hide (unmap) the focused floating window
+        xdotool windowunmap $i
+        # Search for child windows with the _SCRATCH property and select the earliest one
+        i=$(for w in $(xwininfo -root -children | grep -e "^\s*0x[0-9a-f]\+" -o); do
+        t=$(xprop -id $w _SCRATCH | grep ' = \(.*\)')
+        if [ -n "$t" ]; then
+            echo $t $w
+        fi
+        done | sort -n | head -n1 | cut -d" " -f 5)
+        # Remove the _SCRATCH property from the selected window
+        xprop -id $i -remove _SCRATCH
+        mpv=$(xprop -id $i | grep WM_CLASS | cut -d'"' -f4)
+        # Define a rule for all new windows to make them floating and centered
+        if [[ "$mpv" != "mpv" ]] || [[ "$mpv" != "Zathura" ]]; then
+            bspc rule -a \* state=floating center=on --one-shot
+        fi
+        # Show the selected window
+        xdotool windowmap $i
+        # Focus on the selected window
+        bspc node -f $i
+        ;;
+    hide)
+        id=$(bspc query -N -n "focused");\
+        if [ -n "$id" ];then \
+            xprop -id $id -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N);\
+            bspc node -t "floating";\
+            xdotool windowunmap $id;\
+        fi
+        ;;
+esac
+

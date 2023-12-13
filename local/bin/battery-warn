@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# file:        battery-warn
+# author:      Brian Buccola <brian.buccola@gmail.com>
+#
+# description: This script warns you when your battery dips below a certain
+#              percentage. Requires acpi, xmessage, and bc.
+
+pct_now=$(cat /sys/class/power_supply/BAT0/capacity)
+status=$(cat /sys/class/power_supply/BAT0/status)
+
+if [[ $status = "Charging" ]]; then
+    exit 0
+fi
+
+if [[ $pct_now -le 15 ]]; then
+    dunstify -u critical BATTERY "Low Battery:$pct_now%\n CHARGE NOW"
+fi
+
